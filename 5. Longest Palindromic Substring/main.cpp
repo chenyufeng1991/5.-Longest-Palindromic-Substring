@@ -7,9 +7,52 @@
 //
 
 #include <iostream>
+#include <string>
 
-int main(int argc, const char * argv[]) {
-    // insert code here...
-    std::cout << "Hello, World!\n";
+using namespace std;
+
+bool isPalindromic(string s)
+{
+    string sCopy = s;
+    reverse(s.begin(), s.end());
+    if (s == sCopy)
+    {
+        return true;
+    }
+
+    return false;
+}
+
+string longestPalindrome(string s)
+{
+    long length = s.length();
+    for (long i = 0; i < s.length(); i++)
+    {
+        if (i + length > s.length())
+        {
+            length--;
+            i = -1;
+            continue;
+        }
+
+        string temp = s.substr(i,length);
+        if (isPalindromic(temp))
+        {
+            return temp;
+        }
+        else
+        {
+            continue;
+        }
+    }
+
+    return "";
+}
+
+int main(int argc, const char * argv[])
+{
+    string result = longestPalindrome("civilwartestingwhetherthatnaptionoranynartionsoconceivedandsodedicatedcanlongendureWeareqmetonagreatbattlefiemldoftzhatwarWehavecometodedicpateaportionofthatfieldasafinalrestingplaceforthosewhoheregavetheirlivesthatthatnationmightliveItisaltogetherfangandproperthatweshoulddothisButinalargersensewecannotdedicatewecannotconsecratewecannothallowthisgroundThebravelmenlivinganddeadwhostruggledherehaveconsecrateditfaraboveourpoorponwertoaddordetractTgheworldadswfilllittlenotlenorlongrememberwhatwesayherebutitcanneverforgetwhattheydidhereItisforusthelivingrathertobededicatedheretotheulnfinishedworkwhichtheywhofoughtherehavethusfarsonoblyadvancedItisratherforustobeherededicatedtothegreattdafskremainingbeforeusthatfromthesehonoreddeadwetakeincreaseddevotiontothatcauseforwhichtheygavethelastpfullmeasureofdevotionthatweherehighlyresolvethatthesedeadshallnothavediedinvainthatthisnationunsderGodshallhaveanewbirthoffreedomandthatgovernmentofthepeoplebythepeopleforthepeopleshallnotperishfromtheearth");
+
+    cout << result;
     return 0;
 }
